@@ -2,17 +2,30 @@ import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    const user = {
+      email,
+      password,
+    };
+
+    console.log(user);
+  };
   return (
     <div>
       <div className="container mx-auto">
         <div className=" min-h-screen ">
-          <div className="pt-32">
+          <div className="py-16">
             <div className="text-center py-5">
               <h1 className="text-5xl font-bold">Login now!</h1>
             </div>
             <div className="max-w-sm shadow-2xl rounded-lg mx-auto">
               <div className="p-8 ">
-                <form>
+                <form onSubmit={handleLogin}>
                   <div>
                     <p className="pb-5 text-red-600">
                       Error has been occurred!
@@ -48,7 +61,11 @@ const Login = () => {
                     </label> */}
                   </div>
                   <div className="form-control mt-6">
-                    <button className="btn btn-primary">Login</button>
+                    <input
+                      type="submit"
+                      value="Login"
+                      className="btn btn-primary"
+                    />
                   </div>
                 </form>
                 <div className="flex flex-col w-full border-opacity-50">

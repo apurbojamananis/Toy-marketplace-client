@@ -1,18 +1,36 @@
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+const handleRegister = (event) => {
+  event.preventDefault();
+  const form = event.target;
+  const name = form.name.value;
+  const email = form.email.value;
+  const password = form.password.value;
+  const photoUrl = form.photo.value;
+
+  const user = {
+    name,
+    email,
+    password,
+    photoUrl,
+  };
+
+  console.log(user);
+};
+
 const Register = () => {
   return (
     <div>
       <div className="container mx-auto">
         <div className=" min-h-screen ">
-          <div className="pt-32">
+          <div className="py-16">
             <div className="text-center py-5">
               <h1 className="text-5xl font-bold">Register now!</h1>
             </div>
             <div className="max-w-sm shadow-2xl rounded-lg mx-auto">
               <div className="p-8 ">
-                <form>
+                <form onSubmit={handleRegister}>
                   <div>
                     <p className="pb-5 text-red-600">
                       Error has been occurred!
@@ -62,7 +80,6 @@ const Register = () => {
                         name="photo"
                         placeholder="photo URL"
                         className="input input-bordered"
-                        required
                       />
                     </div>
                     {/* <label className="label">
@@ -72,7 +89,11 @@ const Register = () => {
                     </label> */}
                   </div>
                   <div className="form-control mt-6">
-                    <button className="btn btn-primary">Login</button>
+                    <input
+                      type="submit"
+                      value="Register"
+                      className="btn btn-primary"
+                    />
                   </div>
                 </form>
                 <div className="flex flex-col w-full border-opacity-50">
