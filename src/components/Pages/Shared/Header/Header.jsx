@@ -59,7 +59,9 @@ const Header = () => {
             </ul>
           </div>
           <div className="navbar-end">
-            <Link className="btn">Login</Link>
+            <Link to="/login" className="btn">
+              Login
+            </Link>
             <div className="avatar">
               <div className="w-10 rounded-full">
                 <img src="https://randomuser.me/api/portraits/thumb/men/20.jpg" />

@@ -1,11 +1,7 @@
-import Header from "../../Shared/Header/Header";
-import Footer from "../../Shared/Footer/Footer";
-
 const Home = () => {
   return (
     <div>
-      <Header></Header>
-      <Footer></Footer>
+      <h2> Content is coming</h2>
     </div>
   );
 };
