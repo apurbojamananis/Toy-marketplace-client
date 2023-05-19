@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
-const Toy = ({ toy }) => {
+const Toy = ({ toy, length }) => {
   const { sellerName, ToyName, subCategory, price, quantity } = toy;
   return (
     <tr>
+      <td>{length + 1}</td>
       <td>
         <div className="font-bold">{sellerName}</div>
       </td>

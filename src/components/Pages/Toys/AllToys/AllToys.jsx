@@ -1,9 +1,35 @@
 import { useLoaderData } from "react-router-dom";
 import Toy from "./Toy";
+import { useState } from "react";
 
 const AllToys = () => {
   const toys = useLoaderData();
-  console.log(toys);
+  const [allToys, setAllToys] = useState(toys);
+
+  const maxItem = 20;
+
+  if (allToys.length >= maxItem) {
+    const slicedToys = allToys.slice(0, maxItem);
+    setAllToys(slicedToys);
+  }
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    const value = event.target.value.toLowerCase();
+
+    if (value === "") {
+      // If the value is empty, show all toys
+      setAllToys(toys);
+    } else {
+      const filteredToys = toys.filter((toy) => {
+        const items = toy.ToyName.toLowerCase();
+        return items.includes(value);
+      });
+
+      setAllToys(filteredToys);
+    }
+  };
+
   return (
     <div className="container mx-auto">
       <hr />
@@ -13,12 +39,26 @@ const AllToys = () => {
             Number of Available Toys: {toys.length}
           </h2>
         </div>
+        <div className="py-5 flex justify-end">
+          <div className="form-control">
+            <label className="input-group">
+              <input
+                type="text"
+                placeholder="search here"
+                className="input input-bordered"
+                onChange={handleChange}
+              />
+              <span>Search</span>
+            </label>
+          </div>
+        </div>
         <div>
           <div className="overflow-x-auto w-full">
             <table className="table w-full">
               {/* head */}
               <thead>
                 <tr>
+                  <th>SL</th>
                   <th>Seller Name</th>
                   <th>Toy Name</th>
                   <th>Sub-category</th>
@@ -28,8 +68,8 @@ const AllToys = () => {
                 </tr>
               </thead>
               <tbody>
-                {toys.map((toy) => (
-                  <Toy key={toy._id} toy={toy}></Toy>
+                {allToys.map((toy, index) => (
+                  <Toy key={toy._id} toy={toy} length={index}></Toy>
                 ))}
               </tbody>
             </table>
