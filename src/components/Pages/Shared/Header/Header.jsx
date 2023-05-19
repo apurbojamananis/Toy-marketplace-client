@@ -1,7 +1,26 @@
+import { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
-
+import { AuthContext } from "../../../Providers/AuthProviders";
+import Swal from "sweetalert2";
+import { FaUserAlt } from "react-icons/fa";
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          title: "logOut Successfully",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <div className="container mx-auto ">
@@ -59,14 +78,26 @@ const Header = () => {
             </ul>
           </div>
           <div className="navbar-end">
-            <Link to="/login" className="btn">
-              Login
-            </Link>
-            <div className="avatar">
-              <div className="w-10 rounded-full">
-                <img src="https://randomuser.me/api/portraits/thumb/men/20.jpg" />
+            {user && (
+              <div className="avatar  mr-3">
+                <div className="w-10 rounded-full">
+                  {user.photoURL ? (
+                    <img src={user.photoURL} />
+                  ) : (
+                    <FaUserAlt className="mx-auto mt-4 "></FaUserAlt>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
+            {user ? (
+              <Link onClick={handleLogOut} to="/login" className="btn">
+                LogOut
+              </Link>
+            ) : (
+              <Link to="/login" className="btn">
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>

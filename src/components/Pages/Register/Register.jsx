@@ -1,11 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { SignUp } = useContext(AuthContext);
+  const [error, setError] = useState(null);
+  const { SignUp, ProfileUpdate, logOut, googleSignIn } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -13,22 +16,6 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photoUrl = form.photo.value;
-
-    SignUp(email, password)
-      .then((result) => {
-        const CreatedUser = result.user;
-        console.log(CreatedUser);
-        Swal.fire({
-          title: "Awesome! User Created Successfully",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 2000,
-        });
-        form.reset();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
 
     const user = {
       name,
@@ -38,6 +25,40 @@ const Register = () => {
     };
 
     console.log(user);
+    setError(null);
+    SignUp(email, password)
+      .then((result) => {
+        const CreatedUser = result.user;
+        console.log(CreatedUser);
+        ProfileUpdate(CreatedUser, name, photoUrl);
+        Swal.fire({
+          title: "Awesome! User Created Successfully",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        logOut();
+        navigate("/login");
+        form.reset();
+      })
+      .catch((error) => {
+        const errText = error.message;
+        const slicedErr = errText.split("/")[1].split(")")[0];
+        setError(slicedErr);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then(() => {
+        logOut();
+        navigate("/login");
+      })
+      .catch((error) => {
+        const errText = error.message;
+        const slicedErr = errText.split("/")[1].split(")")[0];
+        setError(slicedErr);
+      });
   };
   return (
     <div>
@@ -51,9 +72,7 @@ const Register = () => {
               <div className="p-8 ">
                 <form onSubmit={handleRegister}>
                   <div>
-                    <p className="pb-5 text-red-600">
-                      Error has been occurred!
-                    </p>
+                    <p className="pb-5 text-red-600">{error}</p>
                   </div>
                   <div className="form-control">
                     <label className="label">
@@ -117,7 +136,10 @@ const Register = () => {
                 </form>
                 <div className="flex flex-col w-full border-opacity-50">
                   <div className="divider">OR</div>
-                  <button className="btn btn-neutral capitalize">
+                  <button
+                    className="btn btn-neutral capitalize"
+                    onClick={handleGoogleSignIn}
+                  >
                     <FaGoogle className="mr-2"></FaGoogle> Continue with Google
                   </button>
                 </div>

@@ -1,19 +1,55 @@
+import { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const [error, setError] = useState(null);
+  const { SignIn, googleSignIn } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-
+    setError(null);
     const user = {
       email,
       password,
     };
 
+    SignIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        Swal.fire({
+          title: `Hi ${loggedUser.displayName}! Welcome to iLearnToys`,
+          icon: "success",
+          showConfirmButton: false,
+          timer: 4000,
+        });
+        form.reset();
+        navigate("/");
+      })
+      .catch((error) => {
+        const errText = error.message;
+        const slicedErr = errText.split("/")[1].split(")")[0];
+        setError(slicedErr);
+      });
+
     console.log(user);
+  };
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        const errText = error.message;
+        const slicedErr = errText.split("/")[1].split(")")[0];
+        setError(slicedErr);
+      });
   };
   return (
     <div>
@@ -27,9 +63,7 @@ const Login = () => {
               <div className="p-8 ">
                 <form onSubmit={handleLogin}>
                   <div>
-                    <p className="pb-5 text-red-600">
-                      Error has been occurred!
-                    </p>
+                    <p className="pb-5 text-red-600">{error}</p>
                   </div>
                   <div className="form-control">
                     <label className="label">
@@ -70,7 +104,10 @@ const Login = () => {
                 </form>
                 <div className="flex flex-col w-full border-opacity-50">
                   <div className="divider">OR</div>
-                  <button className="btn btn-neutral capitalize">
+                  <button
+                    className="btn btn-neutral capitalize"
+                    onClick={handleGoogleSignIn}
+                  >
                     <FaGoogle className="mr-2"></FaGoogle> Continue with Google
                   </button>
                 </div>
