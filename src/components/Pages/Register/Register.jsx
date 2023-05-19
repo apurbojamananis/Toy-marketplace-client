@@ -1,25 +1,44 @@
+import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
-const handleRegister = (event) => {
-  event.preventDefault();
-  const form = event.target;
-  const name = form.name.value;
-  const email = form.email.value;
-  const password = form.password.value;
-  const photoUrl = form.photo.value;
-
-  const user = {
-    name,
-    email,
-    password,
-    photoUrl,
-  };
-
-  console.log(user);
-};
+import { AuthContext } from "../../Providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const Register = () => {
+  const { SignUp } = useContext(AuthContext);
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photoUrl = form.photo.value;
+
+    SignUp(email, password)
+      .then((result) => {
+        const CreatedUser = result.user;
+        console.log(CreatedUser);
+        Swal.fire({
+          title: "Awesome! User Created Successfully",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        form.reset();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    const user = {
+      name,
+      email,
+      password,
+      photoUrl,
+    };
+
+    console.log(user);
+  };
   return (
     <div>
       <div className="container mx-auto">
