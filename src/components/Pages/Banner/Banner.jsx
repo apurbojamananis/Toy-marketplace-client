@@ -37,7 +37,7 @@ const Banner = () => {
             <div className="bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] min-h-screen">
               <div className="container mx-auto  text-white ">
                 <div className="w--full px-3 md:w-6/12 md:px-5">
-                  <div className="flex flex-col pt-56 ">
+                  <div className="flex flex-col pt-32 md:pt-56 ">
                     <h1 className="text-7xl font-bold leading-tight">
                       Ignite Curiosity and Learning with Science Kits
                     </h1>
@@ -73,9 +73,9 @@ const Banner = () => {
             <div className="bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] min-h-screen">
               <div className="container mx-auto  text-white ">
                 <div className="w--full px-3 md:w-6/12 md:px-5">
-                  <div className="flex flex-col pt-56 ">
+                  <div className="flex flex-col pt-32 md:pt-56  ">
                     <h1 className="text-7xl font-bold leading-tight">
-                      Ignite Curiosity and Learning with Science Kits
+                      Unleash the Power of Math with Learning Toys
                     </h1>
                     <p className="mt-4 leading-normal">
                       Make math exciting and enjoyable with our diverse
@@ -109,9 +109,9 @@ const Banner = () => {
             <div className="bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] min-h-screen">
               <div className="container mx-auto  text-white ">
                 <div className="w--full px-3 md:w-6/12 md:px-5">
-                  <div className="flex flex-col pt-56 ">
+                  <div className="flex flex-col pt-32 md:pt-56 ">
                     <h1 className="text-7xl font-bold leading-tight">
-                      Ignite Curiosity and Learning with Science Kits
+                      Build and Innovate with Engineering Kits
                     </h1>
                     <p className="mt-4 leading-normal">
                       Nurture your child&apos;s creativity and problem-solving

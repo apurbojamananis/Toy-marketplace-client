@@ -53,8 +53,12 @@ const Header = () => {
               </ul>
             </div>
             <div className="flex items-center gap-2">
-              <img src="./logo.png" alt="Logo" className="w-20" />
-              <h1 className="text-2xl font-bold">iLearnToys</h1>
+              <Link to="/">
+                <img src="./logo.png" alt="Logo" className="w-20" />
+              </Link>
+              <Link>
+                <h1 className="text-2xl font-bold">iLearnToys</h1>
+              </Link>
             </div>
           </div>
           <div className="navbar-center hidden lg:flex">
