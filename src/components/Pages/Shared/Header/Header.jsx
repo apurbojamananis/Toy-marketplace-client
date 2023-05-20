@@ -42,7 +42,7 @@ const Header = () => {
                 </li>
 
                 <li>
-                  <Link to="/">My Toys</Link>
+                  <Link to="/myToys">My Toys</Link>
                 </li>
                 <li>
                   <Link to="/addtoys">Add a Toys</Link>
@@ -71,7 +71,7 @@ const Header = () => {
               </li>
 
               <li>
-                <Link to="/">My Toys</Link>
+                <Link to="/myToys">My Toys</Link>
               </li>
               <li>
                 <Link to="/addtoys">Add a Toys</Link>
@@ -94,11 +94,11 @@ const Header = () => {
               </div>
             )}
             {user ? (
-              <Link onClick={handleLogOut} to="/login" className="btn">
+              <Link onClick={handleLogOut} to="/login" className="btn btn-sm">
                 LogOut
               </Link>
             ) : (
-              <Link to="/login" className="btn">
+              <Link to="/login" className="btn btn-sm">
                 Login
               </Link>
             )}
