@@ -7,6 +7,7 @@ import Error from "../Pages/Error/Error";
 
 import AddToys from "../Pages/Toys/AddToys/AddToys";
 import AllToys from "../Pages/Toys/AllToys/AllToys";
+// import ShopByCategory from "../Pages/ShopByCategory/ShopByCategory";
 
 const Router = createBrowserRouter([
   {
@@ -35,6 +36,12 @@ const Router = createBrowserRouter([
         element: <AllToys></AllToys>,
         loader: () => fetch("http://localhost:5000/alltoys"),
       },
+      // {
+      //   path: "/shopByCategory/:subcategory",
+      //   element: <ShopByCategory></ShopByCategory>,
+      //   loader: ({ params }) =>
+      //     fetch(`http://localhost:5000/shopByCategory/${params.subcategory}`),
+      // },
     ],
   },
 ]);
