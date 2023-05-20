@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
 const ToysCard = ({ toy }) => {
-  const { photoURL, ToyName, price, rating } = toy;
+  const { _id, photoURL, ToyName, price, rating } = toy;
   return (
     <div>
       <div className="card max-w-72 bg-base-100 shadow-xl">
@@ -21,7 +23,9 @@ const ToysCard = ({ toy }) => {
             <p>Rating: {rating}</p>
           </div>
           <div className="card-actions mt-5">
-            <button className="btn btn-sm btn-neutral">View Details</button>
+            <Link to={`/toy/${_id}`}>
+              <button className="btn btn-sm btn-neutral">View Details</button>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
 const Toy = ({ toy, length }) => {
-  const { sellerName, ToyName, subCategory, price, quantity } = toy;
+  const { _id, sellerName, ToyName, subCategory, price, quantity } = toy;
   return (
     <tr>
       <td>{length + 1}</td>
@@ -12,7 +14,9 @@ const Toy = ({ toy, length }) => {
       <td>${price}</td>
       <td>{quantity}</td>
       <th>
-        <button className="btn btn-neutral">details</button>
+        <Link to={`/toy/${_id}`}>
+          <button className="btn btn-neutral">details</button>
+        </Link>
       </th>
     </tr>
   );
