@@ -8,7 +8,7 @@ const MyToys = () => {
   const email = user.email;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${email}`)
+    fetch(`https://b7a11-toy-marketplace-server-kappa.vercel.app/user/${email}`)
       .then((res) => res.json())
       .then((data) => {
         setMyToys(data);
@@ -50,7 +50,6 @@ const MyToys = () => {
           </table>
         </div>
       </div>
-      
     </div>
   );
 };

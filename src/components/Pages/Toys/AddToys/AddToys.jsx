@@ -34,7 +34,7 @@ const AddToys = () => {
 
     // console.log(toysInfo);
 
-    fetch("http://localhost:5000/allToys", {
+    fetch("https://b7a11-toy-marketplace-server-kappa.vercel.app/allToys", {
       method: "POST",
       headers: {
         "content-type": "application/json",

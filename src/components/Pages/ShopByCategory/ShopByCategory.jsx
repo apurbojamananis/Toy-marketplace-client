@@ -12,7 +12,9 @@ const ShopByCategory = () => {
   }, [tabName]); // Empty dependency array ensures this effect only runs once on component mount
 
   const fetchData = (category) => {
-    fetch(`http://localhost:5000/shopByCategory/${category}`)
+    fetch(
+      `https://b7a11-toy-marketplace-server-kappa.vercel.app/shopByCategory/${category}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setToys(data);

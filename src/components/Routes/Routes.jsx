@@ -40,7 +40,10 @@ const Router = createBrowserRouter([
       {
         path: "/alltoys",
         element: <AllToys></AllToys>,
-        loader: () => fetch("http://localhost:5000/alltoys"),
+        loader: () =>
+          fetch(
+            "https://b7a11-toy-marketplace-server-kappa.vercel.app/alltoys"
+          ),
       },
       {
         path: "/toy/:id",
@@ -49,7 +52,10 @@ const Router = createBrowserRouter([
             <SingleToy></SingleToy>
           </PrivetRoutes>
         ),
-        loader: ({ params }) => fetch(`http://localhost:5000/toy/${params.id}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://b7a11-toy-marketplace-server-kappa.vercel.app/toy/${params.id}`
+          ),
       },
       {
         path: "/myToys",
