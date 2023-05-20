@@ -41,12 +41,16 @@ const Header = () => {
                   <Link to="/alltoys">All Toys</Link>
                 </li>
 
-                <li>
-                  <Link to="/myToys">My Toys</Link>
-                </li>
-                <li>
-                  <Link to="/addtoys">Add a Toys</Link>
-                </li>
+                {user && (
+                  <li>
+                    <Link to="/myToys">My Toys</Link>
+                  </li>
+                )}
+                {user && (
+                  <li>
+                    <Link to="/addtoys">Add a Toys</Link>
+                  </li>
+                )}
                 <li>
                   <Link to="/">Blogs</Link>
                 </li>
@@ -70,12 +74,16 @@ const Header = () => {
                 <Link to="/alltoys">All Toys</Link>
               </li>
 
-              <li>
-                <Link to="/myToys">My Toys</Link>
-              </li>
-              <li>
-                <Link to="/addtoys">Add a Toys</Link>
-              </li>
+              {user && (
+                <li>
+                  <Link to="/myToys">My Toys</Link>
+                </li>
+              )}
+              {user && (
+                <li>
+                  <Link to="/addtoys">Add a Toys</Link>
+                </li>
+              )}
               <li>
                 <Link to="/">Blogs</Link>
               </li>
