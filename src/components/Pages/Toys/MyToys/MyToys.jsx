@@ -50,6 +50,7 @@ const MyToys = () => {
           </table>
         </div>
       </div>
+      
     </div>
   );
 };
