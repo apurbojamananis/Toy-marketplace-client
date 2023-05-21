@@ -90,17 +90,22 @@ const Header = () => {
             </ul>
           </div>
           <div className="navbar-end">
-            {user && (
-              <div className="avatar  mr-3">
-                <div className="w-10 rounded-full">
-                  {user.photoURL ? (
-                    <img src={user.photoURL} />
-                  ) : (
-                    <FaUserAlt className="mx-auto mt-4 "></FaUserAlt>
-                  )}
+            <div
+              className="tooltip tooltip-left"
+              data-tip={user && user.displayName}
+            >
+              {user && (
+                <div className="avatar  mr-3">
+                  <div className="w-10 rounded-full">
+                    {user.photoURL ? (
+                      <img src={user.photoURL} />
+                    ) : (
+                      <FaUserAlt className="mx-auto mt-4 "></FaUserAlt>
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
             {user ? (
               <Link onClick={handleLogOut} to="/login" className="btn btn-sm">
                 LogOut
