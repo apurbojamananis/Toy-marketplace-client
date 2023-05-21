@@ -33,8 +33,6 @@ const AddToys = () => {
       description,
     };
 
-    console.log(toysInfo);
-
     fetch("https://b7a11-toy-marketplace-server-kappa.vercel.app/allToys", {
       method: "POST",
       headers: {
@@ -46,7 +44,6 @@ const AddToys = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         if (data.insertedId) {
           Swal.fire({
             title: "Data saved Successfully",

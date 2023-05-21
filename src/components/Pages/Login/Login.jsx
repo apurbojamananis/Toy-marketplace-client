@@ -18,15 +18,15 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     setError(null);
-    const user = {
-      email,
-      password,
-    };
+    // const user = {
+    //   email,
+    //   password,
+    // };
 
     SignIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+
         Swal.fire({
           title: `Hi ${loggedUser.displayName}! Welcome to iLearnToys`,
           icon: "success",
@@ -41,8 +41,6 @@ const Login = () => {
         const slicedErr = errText.split("/")[1].split(")")[0];
         setError(slicedErr);
       });
-
-    console.log(user);
   };
   const handleGoogleSignIn = () => {
     googleSignIn()

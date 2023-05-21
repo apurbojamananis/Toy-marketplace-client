@@ -20,10 +20,8 @@ const MyToys = () => {
     let value = e.target.value;
     if (value === "low to high") {
       setApiURL(ascendingUrl);
-      console.log(ascendingUrl);
     } else {
       setApiURL(descendingUrl);
-      console.log(descendingUrl);
     }
   };
   useEffect(() => {

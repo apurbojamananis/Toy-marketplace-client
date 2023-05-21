@@ -77,11 +77,6 @@ const Router = createBrowserRouter([
         loader: () =>
           fetch("https://b7a11-toy-marketplace-server-kappa.vercel.app/blogs"),
       },
-      // {
-      //   path: "/gallery",
-      //   element: <Gallery></Gallery>,
-      //   loader: () => fetch("https://b7a11-toy-marketplace-server-kappa.vercel.app/gallery"),
-      // },
     ],
   },
 ]);

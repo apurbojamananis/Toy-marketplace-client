@@ -7,12 +7,10 @@ function Gallery() {
     fetch("https://b7a11-toy-marketplace-server-kappa.vercel.app/gallery")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setGalleries(data);
       });
   }, []);
 
-  console.log(galleries);
   return (
     <div className="container mx-auto py-24">
       <div>

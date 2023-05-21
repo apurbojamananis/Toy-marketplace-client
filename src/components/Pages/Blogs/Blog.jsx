@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 const Blog = ({ blog }) => {
   const { img, question, answer } = blog;
-  console.log(img);
+
   return (
     <div className="pb-5">
       <div className="card bg-base-100 shadow-xl">

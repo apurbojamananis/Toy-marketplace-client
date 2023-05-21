@@ -31,9 +31,6 @@ const UpdateToy = () => {
       description,
     };
 
-    // console.log(toysInfo);
-    // console.log(params);
-
     fetch(
       `https://b7a11-toy-marketplace-server-kappa.vercel.app/updateToy/${params.id}`,
       {
@@ -48,7 +45,6 @@ const UpdateToy = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Data Updated Successfully",

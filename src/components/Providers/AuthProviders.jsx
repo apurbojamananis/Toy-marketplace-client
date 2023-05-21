@@ -38,9 +38,7 @@ const AuthProviders = ({ children }) => {
       displayName: name,
       photoURL: photoUrl,
     })
-      .then(() => {
-        console.log("Profile Updated");
-      })
+      .then(() => {})
       .catch((error) => {
         console.log(error);
       });
@@ -49,7 +47,6 @@ const AuthProviders = ({ children }) => {
   //   user observing
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log("State Change is observing", currentUser);
       setUser(currentUser);
       setLoading(false);
     });

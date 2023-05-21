@@ -19,19 +19,18 @@ const Register = () => {
     const password = form.password.value;
     const photoUrl = form.photo.value;
 
-    const user = {
-      name,
-      email,
-      password,
-      photoUrl,
-    };
+    // const user = {
+    //   name,
+    //   email,
+    //   password,
+    //   photoUrl,
+    // };
 
-    console.log(user);
     setError(null);
     SignUp(email, password)
       .then((result) => {
         const CreatedUser = result.user;
-        console.log(CreatedUser);
+
         ProfileUpdate(CreatedUser, name, photoUrl);
         Swal.fire({
           title: "Awesome! User Created Successfully",
