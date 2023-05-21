@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import ToysDetails from "./ToysDetails";
@@ -6,17 +7,32 @@ import useTitle from "../../../Hooks/useTitle";
 
 const MyToys = () => {
   const [myToys, setMyToys] = useState([]);
+  const [selectedOption, setSelectedOption] = useState("");
   const { user } = useContext(AuthContext);
   const email = user.email;
+  const url = `https://b7a11-toy-marketplace-server-kappa.vercel.app/user/${email}`;
+  const ascendingUrl = `http://localhost:5000/ascending/${email}`;
+  const descendingUrl = `http://localhost:5000/descending/${email}`;
+  const [apiURL, setApiURL] = useState(url);
   useTitle("MyToys");
 
+  const handleChange = (e) => {
+    let value = e.target.value;
+    if (value === "low to high") {
+      setApiURL(ascendingUrl);
+      console.log(ascendingUrl);
+    } else {
+      setApiURL(descendingUrl);
+      console.log(descendingUrl);
+    }
+  };
   useEffect(() => {
-    fetch(`https://b7a11-toy-marketplace-server-kappa.vercel.app/user/${email}`)
+    fetch(apiURL)
       .then((res) => res.json())
       .then((data) => {
         setMyToys(data);
       });
-  }, [email]);
+  }, [apiURL]);
 
   const handleDelete = (id) => {
     // alert(` you have delete the product id is:  ${id}`);
@@ -50,6 +66,7 @@ const MyToys = () => {
       }
     });
   };
+
   return (
     <div className="container mx-auto h-full">
       <hr />
@@ -57,6 +74,19 @@ const MyToys = () => {
         <h2 className="text-center text-4xl my-10">
           Total Toys: {myToys.length}
         </h2>
+      </div>
+      <div className="my-5">
+        <select
+          className="select select-info w-full max-w-xs"
+          defaultValue={selectedOption}
+          onChange={handleChange}
+        >
+          <option disabled value="">
+            Filter by Price
+          </option>
+          <option value="low to high">Low to high</option>
+          <option value="high to low">High to Low</option>
+        </select>
       </div>
       <div className="mb-20 ">
         <div className="min-w-full overflow-x-auto">

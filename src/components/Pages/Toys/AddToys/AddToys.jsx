@@ -16,7 +16,7 @@ const AddToys = () => {
     const sellerName = form.sellerName.value;
     const email = user ? user.email : form.email.value;
     const subCategory = selectedCategory;
-    const price = form.price.value;
+    const price = parseFloat(form.price.value);
     const rating = form.rating.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
@@ -33,7 +33,7 @@ const AddToys = () => {
       description,
     };
 
-    // console.log(toysInfo);
+    console.log(toysInfo);
 
     fetch("https://b7a11-toy-marketplace-server-kappa.vercel.app/allToys", {
       method: "POST",

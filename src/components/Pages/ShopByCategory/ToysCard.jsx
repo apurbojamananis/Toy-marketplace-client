@@ -1,13 +1,32 @@
+/* eslint-disable no-unused-vars */
+import { useEffect, useRef } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 /* eslint-disable react/prop-types */
 const ToysCard = ({ toy }) => {
   const { _id, photoURL, ToyName, price, rating } = toy;
+  const aosContainerRef = useRef(null);
+  useEffect(() => {
+    AOS.init({
+      duration: 3000,
+      easing: "ease",
+      once: false,
+    });
+  }, []);
+
+  const refreshAOS = () => {
+    if (aosContainerRef.current) {
+      AOS.refresh();
+    }
+  };
+
   return (
-    <div>
-      <div className="card max-w-72 bg-base-100 shadow-xl">
+    <div ref={aosContainerRef}>
+      <div className="card max-w-72 bg-base-100 shadow-xl" data-aos="zoom-out">
         <figure className="px-10 pt-10 mb-4">
           <img src={photoURL} alt={ToyName} className="rounded-xl max-h-60" />
         </figure>

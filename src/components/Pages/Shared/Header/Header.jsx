@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import Swal from "sweetalert2";
 import { FaUserAlt } from "react-icons/fa";
+
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {

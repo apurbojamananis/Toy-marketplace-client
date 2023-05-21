@@ -7,7 +7,7 @@ import "./FeaturedItems.css";
 
 function FeaturedItems() {
   return (
-    <div className="">
+    <div>
       <div className="container mx-auto pb-48">
         <hr />
         <div className=" pt-32 ">

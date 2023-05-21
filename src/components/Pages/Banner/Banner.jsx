@@ -1,17 +1,32 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
+import { useEffect, useRef } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "../../../index.css";
-
-// import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
 
 const Banner = () => {
+  const aosContainerRef = useRef(null);
+  useEffect(() => {
+    AOS.init({
+      duration: 3000,
+      easing: "ease",
+      once: false,
+      mirror: true,
+    });
+  }, []);
+
+  // eslint-disable-next-line no-unused-vars
+  const refreshAOS = () => {
+    if (aosContainerRef.current) {
+      AOS.refresh();
+    }
+  };
   return (
-    <>
+    <div ref={aosContainerRef}>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -35,7 +50,10 @@ const Banner = () => {
             className="min-h-screen"
           >
             <div className="bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] min-h-screen">
-              <div className="container mx-auto  text-white ">
+              <div
+                className="container mx-auto  text-white "
+                data-aos="fade-up-left"
+              >
                 <div className="w--full px-3 md:w-6/12 md:px-5">
                   <div className="flex flex-col pt-32 md:pt-56 ">
                     <h1 className="text-7xl font-bold leading-tight">
@@ -71,7 +89,10 @@ const Banner = () => {
             className="min-h-screen"
           >
             <div className="bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] min-h-screen">
-              <div className="container mx-auto  text-white ">
+              <div
+                className="container mx-auto  text-white "
+                data-aos="fade-up-left"
+              >
                 <div className="w--full px-3 md:w-6/12 md:px-5">
                   <div className="flex flex-col pt-32 md:pt-56  ">
                     <h1 className="text-7xl font-bold leading-tight">
@@ -107,7 +128,10 @@ const Banner = () => {
             className="min-h-screen"
           >
             <div className="bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] min-h-screen">
-              <div className="container mx-auto  text-white ">
+              <div
+                className="container mx-auto  text-white "
+                data-aos="fade-up-left"
+              >
                 <div className="w--full px-3 md:w-6/12 md:px-5">
                   <div className="flex flex-col pt-32 md:pt-56 ">
                     <h1 className="text-7xl font-bold leading-tight">
@@ -137,7 +161,7 @@ const Banner = () => {
           </div>
         </SwiperSlide>
       </Swiper>
-    </>
+    </div>
   );
 };
 
