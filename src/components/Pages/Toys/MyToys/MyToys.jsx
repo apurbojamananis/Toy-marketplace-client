@@ -11,8 +11,8 @@ const MyToys = () => {
   const { user } = useContext(AuthContext);
   const email = user.email;
   const url = `https://b7a11-toy-marketplace-server-kappa.vercel.app/user/${email}`;
-  const ascendingUrl = `http://localhost:5000/ascending/${email}`;
-  const descendingUrl = `http://localhost:5000/descending/${email}`;
+  const ascendingUrl = `https://b7a11-toy-marketplace-server-kappa.vercel.app/ascending/${email}`;
+  const descendingUrl = `https://b7a11-toy-marketplace-server-kappa.vercel.app/descending/${email}`;
   const [apiURL, setApiURL] = useState(url);
   useTitle("MyToys");
 

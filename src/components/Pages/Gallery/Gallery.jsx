@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 function Gallery() {
   const [galleries, setGalleries] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/gallery")
+    fetch("https://b7a11-toy-marketplace-server-kappa.vercel.app/gallery")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
