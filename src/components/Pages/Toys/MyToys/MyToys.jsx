@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import ToysDetails from "./ToysDetails";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
   const [myToys, setMyToys] = useState([]);
@@ -15,6 +16,35 @@ const MyToys = () => {
       });
   }, [email]);
 
+  const handleDelete = (id) => {
+    // alert(` you have delete the product id is:  ${id}`);
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/toy/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => {
+            return res.json();
+          })
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your Data has been deleted.", "success");
+            }
+            const remaining = myToys.filter((toys) => toys._id !== id);
+            setMyToys(remaining);
+          });
+      }
+    });
+  };
   return (
     <div className="container mx-auto h-full">
       <hr />
@@ -43,8 +73,13 @@ const MyToys = () => {
               </tr>
             </thead>
             <tbody>
-              {myToys.map((toy) => (
-                <ToysDetails key={toy._id} toy={toy}></ToysDetails>
+              {myToys.map((toy, index) => (
+                <ToysDetails
+                  key={toy._id}
+                  toy={toy}
+                  index={index}
+                  handleDelete={handleDelete}
+                ></ToysDetails>
               ))}
             </tbody>
           </table>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
-const ToysDetails = ({ toy }) => {
+const ToysDetails = ({ toy, index, handleDelete }) => {
   const {
     _id,
     ToyName,
@@ -16,7 +16,7 @@ const ToysDetails = ({ toy }) => {
   } = toy;
   return (
     <tr className="hover">
-      <th className="whitespace-normal">1</th>
+      <th className="whitespace-normal">{index + 1}</th>
       <td className="whitespace-normal">{ToyName}</td>
       <td className="whitespace-normal">{photoURL}</td>
       <td className="whitespace-normal">{sellerName}</td>
@@ -27,12 +27,19 @@ const ToysDetails = ({ toy }) => {
       <td className="whitespace-normal">{rating}</td>
       <td className="whitespace-normal">{description}</td>
       <td className="whitespace-normal">
-        <Link to={`/updateToy/:${_id}`}>
+        <Link to={`/updateToy/${_id}`}>
           <button className="btn btn-sm btn-neutral">Update</button>
         </Link>
       </td>
       <td className="whitespace-normal">
-        <button className="btn btn-sm btn-neutral">Delete</button>
+        <button
+          className="btn btn-sm btn-neutral"
+          onClick={() => {
+            handleDelete(_id);
+          }}
+        >
+          Delete
+        </button>
       </td>
     </tr>
   );

@@ -1,14 +1,14 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../../../Providers/AuthProviders";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 const UpdateToy = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const { user } = useContext(AuthContext);
   const params = useParams();
 
-  const handleAddToys = (event) => {
+  console.log(params.id);
+
+  const handleUpdateToys = (event) => {
     event.preventDefault();
 
     const form = event.target;
@@ -20,7 +20,7 @@ const UpdateToy = () => {
     const quantity = form.quantity.value;
     const description = form.description.value;
 
-    const toysInfo = {
+    const UpdatedToysInfo = {
       ToyName,
       photoURL,
       subCategory,
@@ -30,34 +30,30 @@ const UpdateToy = () => {
       description,
     };
 
-    console.log(toysInfo);
-    console.log(params);
-    console.log(user);
+    // console.log(toysInfo);
+    // console.log(params);
 
-    // fetch(
-    //   `https://b7a11-toy-marketplace-server-kappa.vercel.app/updateToy/${params}`,
-    //   {
-    //     method: "UPDATE",
-    //     headers: {
-    //       "content-type": "application/json",
-    //     },
-    //     body: JSON.stringify(toysInfo),
-    //   }
-    // )
-    //   .then((res) => {
-    //     return res.json();
-    //   })
-    //   .then((data) => {
-    //     console.log(data);
-    //     if (data.insertedId) {
-    //       Swal.fire({
-    //         title: "Data saved Successfully",
-    //         icon: "success",
-    //         showConfirmButton: false,
-    //         timer: 4000,
-    //       });
-    //     }
-    //   });
+    fetch(`http://localhost:5000/updateToy/${params.id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(UpdatedToysInfo),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Data Updated Successfully",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 4000,
+          });
+        }
+      });
   };
 
   return (
@@ -69,7 +65,7 @@ const UpdateToy = () => {
         </h1>
       </div>
       <div className="w-8/12 mx-auto pb-20">
-        <form onSubmit={handleAddToys}>
+        <form onSubmit={handleUpdateToys}>
           <div className="grid grid-cols-2 gap-10">
             <div className="form-control">
               <label className="label">

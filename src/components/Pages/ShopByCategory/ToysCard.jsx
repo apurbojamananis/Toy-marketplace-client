@@ -7,7 +7,7 @@ const ToysCard = ({ toy }) => {
     <div>
       <div className="card max-w-72 bg-base-100 shadow-xl">
         <figure className="px-10 pt-10 mb-4">
-          <img src={photoURL} alt={ToyName} className="rounded-xl" />
+          <img src={photoURL} alt={ToyName} className="rounded-xl max-h-60" />
         </figure>
         <hr />
         <div className="card-body items-center bg-slate-300 rounded">

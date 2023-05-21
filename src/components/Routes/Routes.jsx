@@ -69,6 +69,10 @@ const Router = createBrowserRouter([
       {
         path: "/updateToy/:id",
         element: <UpdateToy></UpdateToy>,
+        // loader: ({ params }) =>
+        //   fetch(
+        //     `https://b7a11-toy-marketplace-server-kappa.vercel.app/updateToy/${params.id}`
+        //   ),
       },
     ],
   },
