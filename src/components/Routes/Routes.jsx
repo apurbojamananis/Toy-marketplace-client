@@ -76,6 +76,11 @@ const Router = createBrowserRouter([
         element: <Blogs></Blogs>,
         loader: () => fetch("http://localhost:5000/blogs"),
       },
+      // {
+      //   path: "/gallery",
+      //   element: <Gallery></Gallery>,
+      //   loader: () => fetch("http://localhost:5000/gallery"),
+      // },
     ],
   },
 ]);
