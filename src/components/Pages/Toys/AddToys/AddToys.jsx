@@ -53,6 +53,7 @@ const AddToys = () => {
             showConfirmButton: false,
             timer: 4000,
           });
+          form.reset();
         }
       });
   };

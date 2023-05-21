@@ -11,6 +11,7 @@ import SingleToy from "../Pages/Toys/SingleToy/SingleToy";
 import MyToys from "../Pages/Toys/MyToys/MyToys";
 import PrivetRoutes from "./PrivetRoutes";
 import UpdateToy from "../Pages/Toys/UpdateToy/UpdateToy";
+import Blogs from "../Pages/Blogs/Blogs";
 
 const Router = createBrowserRouter([
   {
@@ -69,10 +70,11 @@ const Router = createBrowserRouter([
       {
         path: "/updateToy/:id",
         element: <UpdateToy></UpdateToy>,
-        // loader: ({ params }) =>
-        //   fetch(
-        //     `https://b7a11-toy-marketplace-server-kappa.vercel.app/updateToy/${params.id}`
-        //   ),
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
+        loader: () => fetch("http://localhost:5000/blogs"),
       },
     ],
   },

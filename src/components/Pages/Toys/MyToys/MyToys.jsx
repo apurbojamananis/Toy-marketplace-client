@@ -29,9 +29,12 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/toy/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://b7a11-toy-marketplace-server-kappa.vercel.app/toy/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => {
             return res.json();
           })
@@ -53,7 +56,7 @@ const MyToys = () => {
           Total Toys: {myToys.length}
         </h2>
       </div>
-      <div className="mb-20 overflow-hidden">
+      <div className="mb-20 ">
         <div className="min-w-full overflow-x-auto">
           <table className="table w-full">
             <thead>

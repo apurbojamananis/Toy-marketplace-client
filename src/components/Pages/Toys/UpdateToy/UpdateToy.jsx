@@ -33,13 +33,16 @@ const UpdateToy = () => {
     // console.log(toysInfo);
     // console.log(params);
 
-    fetch(`http://localhost:5000/updateToy/${params.id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(UpdatedToysInfo),
-    })
+    fetch(
+      `https://b7a11-toy-marketplace-server-kappa.vercel.app/updateToy/${params.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(UpdatedToysInfo),
+      }
+    )
       .then((res) => {
         return res.json();
       })

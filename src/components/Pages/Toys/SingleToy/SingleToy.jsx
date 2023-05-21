@@ -1,5 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const SingleToy = () => {
   const toy = useLoaderData();
@@ -30,8 +32,13 @@ const SingleToy = () => {
           <h3>Seller Name: {sellerName}</h3>
           <h3>Seller Email: {email}</h3>
           <h5>Price: ${price}</h5>
-          <h5>Rating: {rating}</h5>
-          <h5>Available Quantity: ${quantity}</h5>
+          <h3 className="flex items-center">
+            Rating:{" "}
+            <span className="ml-1">
+              <Rating style={{ maxWidth: 100 }} value={rating} readOnly />
+            </span>
+          </h3>
+          <h5>Available Quantity: {quantity}</h5>
           <p>Description: {description}</p>
           <div className="card-actions mt-5">
             <button

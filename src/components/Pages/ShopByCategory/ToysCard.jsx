@@ -1,3 +1,5 @@
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
@@ -20,7 +22,12 @@ const ToysCard = ({ toy }) => {
             </div>
           </div>
           <div className="w-full">
-            <p>Rating: {rating}</p>
+            <p className="flex items-center">
+              Rating:{" "}
+              <span className="ml-1">
+                <Rating style={{ maxWidth: 100 }} value={rating} readOnly />
+              </span>
+            </p>
           </div>
           <div className="card-actions mt-5">
             <Link to={`/toy/${_id}`}>

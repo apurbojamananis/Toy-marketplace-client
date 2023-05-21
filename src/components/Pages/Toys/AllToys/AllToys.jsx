@@ -53,7 +53,7 @@ const AllToys = () => {
           </div>
         </div>
         <div>
-          <div className="overflow-x-auto w-full">
+          <div className="overflow-x-auto ">
             <table className="table w-full">
               {/* head */}
               <thead>
