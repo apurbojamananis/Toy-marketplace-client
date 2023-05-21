@@ -1,18 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 import Toy from "./Toy";
 import { useState } from "react";
+import useTitle from "../../../Hooks/useTitle";
 
 const AllToys = () => {
   const toys = useLoaderData();
   const [allToys, setAllToys] = useState(toys);
-
-  const maxItem = 20;
-
-  if (allToys.length >= maxItem) {
-    const slicedToys = allToys.slice(0, maxItem);
-    setAllToys(slicedToys);
-  }
-
+  useTitle("AllToys");
   const handleChange = (event) => {
     event.preventDefault();
     const value = event.target.value.toLowerCase();

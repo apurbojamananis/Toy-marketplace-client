@@ -3,12 +3,14 @@ import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import Swal from "sweetalert2";
+import useTitle from "../../Hooks/useTitle";
 
 const Register = () => {
   const [error, setError] = useState(null);
   const { SignUp, ProfileUpdate, logOut, googleSignIn } =
     useContext(AuthContext);
   const navigate = useNavigate();
+  useTitle("Register");
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;

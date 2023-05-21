@@ -1,8 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 import Blog from "./Blog";
+import useTitle from "../../Hooks/useTitle";
 
 const Blogs = () => {
   const blogs = useLoaderData();
+  useTitle("Blog");
   console.log(blogs);
   return (
     <div className="container mx-auto">

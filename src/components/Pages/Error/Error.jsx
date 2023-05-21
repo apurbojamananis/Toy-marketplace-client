@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import useTitle from "../../Hooks/useTitle";
 
 const Error = () => {
+  useTitle("Error");
   return (
     <div className="container mx-auto">
       <img src="./404.jpg" alt="" className="w-6/12 mx-auto" />

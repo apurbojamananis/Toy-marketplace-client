@@ -16,7 +16,7 @@ function Gallery() {
   return (
     <div className="container mx-auto py-24">
       <div>
-        <h2 className="text-5xl text-center pb-16">Toy Gellery</h2>
+        <h2 className="text-4xl text-center pb-16">Toy Gellery</h2>
       </div>
       <div className="grid md:grid-cols-4 gap-5">
         {galleries.map((gallery) => (

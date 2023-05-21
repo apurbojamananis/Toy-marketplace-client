@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import useTitle from "../../../Hooks/useTitle";
 
 const UpdateToy = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const params = useParams();
 
-  console.log(params.id);
+  useTitle("UpdateToy");
 
   const handleUpdateToys = (event) => {
     event.preventDefault();

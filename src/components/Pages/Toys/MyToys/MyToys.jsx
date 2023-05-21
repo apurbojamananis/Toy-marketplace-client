@@ -2,11 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import ToysDetails from "./ToysDetails";
 import Swal from "sweetalert2";
+import useTitle from "../../../Hooks/useTitle";
 
 const MyToys = () => {
   const [myToys, setMyToys] = useState([]);
   const { user } = useContext(AuthContext);
   const email = user.email;
+  useTitle("MyToys");
 
   useEffect(() => {
     fetch(`https://b7a11-toy-marketplace-server-kappa.vercel.app/user/${email}`)

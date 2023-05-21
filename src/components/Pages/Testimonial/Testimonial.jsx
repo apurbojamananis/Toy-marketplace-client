@@ -5,7 +5,7 @@ const Testimonial = () => {
     <div className="bg-[url('https://i.ibb.co/4fnHnw2/newbg.png')] bg-cover min-h-[700px]">
       <div className="container mx-auto">
         <div>
-          <h1 className="text-center text-3xl pt-24">Customer Review</h1>
+          <h1 className="text-center text-4xl pt-24">Customer Review</h1>
         </div>
         <div>
           <div className="carousel w-full">
