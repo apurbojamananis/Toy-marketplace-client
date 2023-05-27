@@ -69,6 +69,7 @@ const MyToys = () => {
     <div className="container mx-auto h-full">
       <hr />
       <div>
+        <h2 className="text-center text-4xl my-10">Updates are coming...</h2>
         <h2 className="text-center text-4xl my-10">
           Total Toys: {myToys.length}
         </h2>
